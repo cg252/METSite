@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Michigan Trading and Technology — 3D hero scene (Three.js)
+   Michigan Electronic Trading — 3D hero scene (Three.js)
    An FPGA interconnect lattice with signal pulses + floating candlesticks.
    ========================================================================== */
 (function () {
@@ -132,7 +132,7 @@
       map: pIdx % 2 === 0 ? pulseTexGreen : pulseTexBlue,
       transparent: true,
       depthWrite: false,
-      opacity: 0.9
+      opacity: 0.6
     });
     var sprite = new THREE.Sprite(mat);
     sprite.scale.set(0.9, 0.9, 1);
@@ -141,7 +141,7 @@
       sprite: sprite,
       edge: edgeList[Math.floor(Math.random() * edgeList.length)],
       t: Math.random(),
-      speed: 0.004 + Math.random() * 0.006
+      speed: 0.003 + Math.random() * 0.004
     });
   }
 

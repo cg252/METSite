@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Michigan Trading and Technology — shared site behavior
+   Michigan Electronic Trading — shared site behavior
    ========================================================================== */
 (function () {
   'use strict';
@@ -111,7 +111,7 @@
   var tickerTrack = document.getElementById('tickerTrack');
   if (tickerTrack) {
     var tickerData = [
-      ['MTT', '+ALPHA', 'up'],
+      ['MET', '+ALPHA', 'up'],
       ['FPGA', 'RTL·VERILOG', 'up'],
       ['LATENCY', '-3.2ns', 'down'],
       ['DESK:TRADING', 'RESEARCH→LIVE', 'up'],
@@ -180,42 +180,67 @@
   var canvas = document.getElementById('binary-canvas');
   if (canvas) {
     var ctx = canvas.getContext('2d');
-    var cols, drops, fontSize = 15;
+    var cols, colState, fontSize = 22;
+
+    function freshCol() {
+      return {
+        active: Math.random() > 0.55,
+        y: Math.floor(Math.random() * -30),
+        char: Math.random() > 0.5 ? '1' : '0',
+        speed: 0.15 + Math.random() * 0.1
+      };
+    }
 
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       cols = Math.floor(canvas.width / fontSize);
-      drops = new Array(cols).fill(0).map(function () {
-        return Math.floor(Math.random() * -100);
-      });
+      colState = new Array(cols).fill(0).map(freshCol);
     }
     window.addEventListener('resize', resize);
     resize();
 
-    var speed = reducedMotion ? 0.3 : 1;
+    var speedScale = reducedMotion ? 0.3 : 1;
 
     function draw() {
-      ctx.fillStyle = 'rgba(4,7,14,0.11)';
+      // short trail fade — keeps the field calm instead of smearing/building up
+      ctx.fillStyle = 'rgba(4,7,14,0.16)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.font = fontSize + 'px JetBrains Mono, monospace';
 
       for (var i = 0; i < cols; i++) {
-        var char = Math.random() > 0.5 ? '1' : '0';
+        var col = colState[i];
+
+        if (!col.active) {
+          // idle columns rarely wake up, keeping most of the field empty/sparse
+          if (Math.random() > 0.9985) {
+            col.active = true;
+            col.y = 0;
+          }
+          continue;
+        }
+
         var isGreen = i % 2 === 0;
-        var y = drops[i] * fontSize;
+        var y = col.y * fontSize;
 
-        if (y > 0 && y < canvas.height * 0.25) {
-          ctx.fillStyle = isGreen ? 'rgba(157,255,214,0.85)' : 'rgba(122,215,255,0.85)';
+        // bright, legible head digit; dimmer (but still readable) as it falls
+        if (y < canvas.height * 0.22) {
+          ctx.fillStyle = isGreen ? 'rgba(200,255,230,0.55)' : 'rgba(190,230,255,0.55)';
         } else {
-          ctx.fillStyle = isGreen ? 'rgba(34,255,168,0.32)' : 'rgba(58,160,255,0.32)';
+          ctx.fillStyle = isGreen ? 'rgba(34,255,168,0.3)' : 'rgba(58,160,255,0.3)';
         }
-        ctx.fillText(char, i * fontSize, y);
+        ctx.fillText(col.char, i * fontSize, y);
 
-        if (y > canvas.height && Math.random() > 0.975) {
-          drops[i] = Math.floor(Math.random() * -40);
+        // rare digit flip — a subtle flicker instead of per-frame noise
+        if (Math.random() > 0.985) col.char = col.char === '1' ? '0' : '1';
+
+        col.y += col.speed * speedScale * 0.25;
+
+        if (y > canvas.height + fontSize) {
+          Object.assign(col, freshCol());
+          col.active = Math.random() > 0.4; // some columns stay idle a while, keeps it sparse
+          col.y = Math.floor(Math.random() * -20);
         }
-        drops[i] += speed * 0.4;
       }
       requestAnimationFrame(draw);
     }

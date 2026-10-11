@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Michigan Trading and Technology — Core Stylesheet
+   Michigan Electronic Trading — Core Stylesheet
    Dark / blue+green / FPGA-circuit themed design system
    ========================================================================== */
 
@@ -141,7 +141,7 @@ button{ font-family:inherit; cursor:pointer; }
   mask-image:radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 85%);
 }
 
-#binary-canvas{ position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.5; mix-blend-mode:screen; }
+#binary-canvas{ position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.32; }
 
 .vignette{
   position:fixed; inset:0; z-index:-1; pointer-events:none;
