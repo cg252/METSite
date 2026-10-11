@@ -1,11 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Copilot</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michigan Trading and Technology | MTT</title>
+<meta name="description" content="Michigan Trading and Technology (MTT) trains students at the intersection of electronic trading and hardware engineering — strategy research, low-latency execution, and FPGAs.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- background layers -->
+<div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div class="pcb-grid"></div>
+<canvas id="binary-canvas"></canvas>
+<div class="vignette"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="mttLogoGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3aa0ff"/><stop offset="1" stop-color="#22ffa8"/>
+          </linearGradient>
+        </defs>
+        <g stroke="url(#mttLogoGrad)" stroke-width="3" stroke-linecap="round">
+          <line x1="30" y1="8" x2="30" y2="20"/><line x1="50" y1="8" x2="50" y2="20"/><line x1="70" y1="8" x2="70" y2="20"/>
+          <line x1="30" y1="80" x2="30" y2="92"/><line x1="50" y1="80" x2="50" y2="92"/><line x1="70" y1="80" x2="70" y2="92"/>
+          <line x1="8" y1="30" x2="20" y2="30"/><line x1="8" y1="50" x2="20" y2="50"/><line x1="8" y1="70" x2="20" y2="70"/>
+          <line x1="80" y1="30" x2="92" y2="30"/><line x1="80" y1="50" x2="92" y2="50"/><line x1="80" y1="70" x2="92" y2="70"/>
+        </g>
+        <rect x="20" y="20" width="60" height="60" rx="9" fill="#060a14" stroke="url(#mttLogoGrad)" stroke-width="2.4"/>
+        <circle class="chip-pulse" cx="28" cy="28" r="2.6" fill="#22ffa8"/>
+        <path d="M33 65 V38 L50 58 L67 38 V65" fill="none" stroke="url(#mttLogoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="33" cy="38" r="2.2" fill="#9dffd6"/><circle cx="67" cy="38" r="2.2" fill="#9dffd6"/><circle cx="50" cy="58" r="2.2" fill="#9dffd6"/>
+      </svg>
+      <span>MTT</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="team.html">Team</a>
+      <a href="events.html">Events</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero">
+    <div id="hero3d"></div>
+    <div class="container hero-content reveal">
+      <span class="eyebrow">University of Michigan · Student-Run</span>
+      <h1>Engineering the <span class="grad-text">Edge</span> of Modern Trading</h1>
+      <p class="lede">Michigan Trading and Technology trains students at the intersection of electronic trading and hardware engineering — from alpha research to low-latency execution on FPGAs.</p>
+      <div class="hero-actions">
+        <a href="apply.html" class="btn btn-primary">Apply to MTT <span class="arrow">→</span></a>
+        <a href="events.html" class="btn btn-ghost">View Events</a>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============================ TICKER ============================ -->
+  <div class="ticker">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <!-- ============================ MISSION ============================ -->
+  <section>
+    <div class="container">
+      <div class="mission reveal">
+        <div class="mission-text">
+          <span class="eyebrow">Our Mission</span>
+          <blockquote>MTT exists to train students at the intersection of electronic trading and hardware engineering — so members can learn, build, and deploy across both disciplines without boundaries.</blockquote>
+          <p class="cite mono">— Article III, MTT Constitution</p>
+          <p>We operate through <strong style="color:var(--text)">project desks</strong>: small teams of trading, hardware, and software members who design, build, and run real trading systems — from strategy research to low-latency execution on FPGAs and other hardware.</p>
+          <p>New members also complete a weekly education program designed to build technical skills early in their college careers, so they leave ready for careers at top trading firms, hardware and systems companies, or their own ventures.</p>
+        </div>
+        <div class="chart-card reveal reveal-delay-1">
+          <div class="chart-top"><b class="mono">MTT ALPHA INDEX</b><span>▲ +12.4%</span></div>
+          <svg class="chart-line" viewBox="0 0 320 140" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartStroke" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#3aa0ff"/><stop offset="1" stop-color="#22ffa8"/>
+              </linearGradient>
+              <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="rgba(34,255,168,0.35)"/><stop offset="1" stop-color="rgba(34,255,168,0)"/>
+              </linearGradient>
+            </defs>
+            <path class="area" d="M0,110 L20,95 L40,100 L60,70 L80,80 L100,55 L120,65 L140,40 L160,50 L180,30 L200,45 L220,20 L240,35 L260,15 L280,25 L300,8 L320,18 L320,140 L0,140 Z"/>
+            <path class="line" d="M0,110 L20,95 L40,100 L60,70 L80,80 L100,55 L120,65 L140,40 L160,50 L180,30 L200,45 L220,20 L240,35 L260,15 L280,25 L300,8 L320,18"/>
+          </svg>
+          <div class="tag-row">
+            <span class="tagpill mono">FPGA EXEC</span>
+            <span class="tagpill mono">LOW-LATENCY</span>
+            <span class="tagpill mono">RISK-MANAGED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== DESK LIFECYCLE ====================== -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How Desks Operate</span>
+        <h2>From Proposal to <span class="grad-text">Live Execution</span></h2>
+        <p>Every project desk moves through a defined lifecycle, with risk limits and board oversight at each stage.</p>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-track">
+          <div class="pipe-step reveal">
+            <div class="num">01</div>
+            <h3>Research Phase</h3>
+            <p>Approved desks develop and test their trading strategy or hardware project. No live trading occurs until a working system or validated edge is demonstrated.</p>
+          </div>
+          <div class="pipe-step reveal reveal-delay-1">
+            <div class="num">02</div>
+            <h3>Live Execution</h3>
+            <p>Desks are approved for live trading by the Director of Trading, with written risk limits, capital allocation, and weekly performance review.</p>
+          </div>
+          <div class="pipe-step reveal reveal-delay-2">
+            <div class="num">03</div>
+            <h3>Continuous Oversight</h3>
+            <p>A desk that breaks its risk limits or stops producing results returns to the Research Phase until approved to resume.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TRACKS ============================ -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Two Tracks, One Desk</span>
+        <h2>Choose Your <span class="grad-text">Track</span></h2>
+        <p>Every member joins through the Trading or Hardware track, and works side-by-side with the other on every desk.</p>
+      </div>
+      <div class="grid-2">
+        <div class="tilt reveal">
+          <div class="tilt-inner card track-card trading">
+            <span class="track-label mono">Trading Track</span>
+            <h3>Strategy &amp; Execution</h3>
+            <p>Research market edges, build and backtest strategies, and run live risk on desk capital.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Strategy research &amp; backtesting</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Risk management &amp; position limits</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Live execution under board-approved limits</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tilt reveal reveal-delay-1">
+          <div class="tilt-inner card track-card hardware">
+            <span class="track-label mono">Hardware Track</span>
+            <h3>FPGAs &amp; Low-Latency Systems</h3>
+            <p>Design and build the hardware-accelerated systems that get orders to the exchange faster.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> FPGA &amp; RTL development</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Low-latency systems engineering</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Hardware integration into desk strategies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FEATURES ============================ -->
+  <section>
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Full-Stack Trading</span>
+        <h2>From Idea to the <span class="grad-text">Order Reaching the Exchange</span></h2>
+        <p>MTT members learn the complete pipeline of modern electronic trading, end to end.</p>
+      </div>
+      <div class="grid-4">
+        <div class="tilt reveal">
+          <div class="tilt-inner card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 5"/><polyline points="15 5 21 5 21 11"/></svg></div>
+            <h3>Strategy &amp; Research</h3>
+            <p>Idea generation, quantitative research, and rigorous backtesting before anything touches the market.</p>
+          </div>
+        </div>
+        <div class="tilt reveal reveal-delay-1">
+          <div class="tilt-inner card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h3>Software &amp; Data</h3>
+            <p>Trading platforms, data pipelines, and simulation tools that connect strategy to hardware.</p>
+          </div>
+        </div>
+        <div class="tilt reveal reveal-delay-2">
+          <div class="tilt-inner card green">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg></div>
+            <h3>FPGA &amp; Hardware</h3>
+            <p>Hardware-accelerated trading projects and low-latency execution engineering on real silicon.</p>
+          </div>
+        </div>
+        <div class="tilt reveal reveal-delay-3">
+          <div class="tilt-inner card green">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 6 V12 C20 17 16 21 12 22 C8 21 4 17 4 12 V6 Z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+            <h3>Execution &amp; Risk</h3>
+            <p>Live execution with written risk limits, capital allocation, and weekly board-level review.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= STATS ============================= -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="stat-strip reveal">
+        <div class="stat"><div class="num mono"><span data-count="2">0</span></div><div class="label">Tracks: Trading &amp; Hardware</div></div>
+        <div class="stat"><div class="num mono"><span data-count="5">0</span></div><div class="label">Elected Director Roles</div></div>
+        <div class="stat"><div class="num mono"><span data-count="100" data-suffix="%">0</span></div><div class="label">Merit-Based Recruiting</div></div>
+        <div class="stat"><div class="num mono">Weekly</div><div class="label">New-Member Education</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CTA ============================= -->
+  <section>
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="eyebrow">Applications Open Each Semester</span>
+        <h2>Ready to Build the Next Generation of <span class="grad-text">Trading Systems?</span></h2>
+        <p>Join a project desk, learn FPGA and low-latency execution, and trade at the intersection of markets and hardware.</p>
+        <div class="hero-actions">
+          <a href="apply.html" class="btn btn-primary">Apply Now <span class="arrow">→</span></a>
+          <a href="team.html" class="btn btn-ghost">Meet the Board</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <g stroke="url(#mttLogoGrad)" stroke-width="3" stroke-linecap="round">
+              <line x1="30" y1="8" x2="30" y2="20"/><line x1="50" y1="8" x2="50" y2="20"/><line x1="70" y1="8" x2="70" y2="20"/>
+              <line x1="30" y1="80" x2="30" y2="92"/><line x1="50" y1="80" x2="50" y2="92"/><line x1="70" y1="80" x2="70" y2="92"/>
+              <line x1="8" y1="30" x2="20" y2="30"/><line x1="8" y1="50" x2="20" y2="50"/><line x1="8" y1="70" x2="20" y2="70"/>
+              <line x1="80" y1="30" x2="92" y2="30"/><line x1="80" y1="50" x2="92" y2="50"/><line x1="80" y1="70" x2="92" y2="70"/>
+            </g>
+            <rect x="20" y="20" width="60" height="60" rx="9" fill="#060a14" stroke="url(#mttLogoGrad)" stroke-width="2.4"/>
+            <circle cx="28" cy="28" r="2.6" fill="#22ffa8"/>
+            <path d="M33 65 V38 L50 58 L67 38 V65" fill="none" stroke="url(#mttLogoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="38" r="2.2" fill="#9dffd6"/><circle cx="67" cy="38" r="2.2" fill="#9dffd6"/><circle cx="50" cy="58" r="2.2" fill="#9dffd6"/>
+          </svg>
+          <span>MTT</span>
+        </a>
+        <p>Michigan Trading and Technology trains students at the intersection of electronic trading and hardware engineering through real project desks.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="events.html">Events</a>
+        <a href="apply.html">Apply</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:hello@mttrading.club">hello@mttrading.club</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Michigan Trading and Technology</span>
+      <span class="disclaimer mono">MTT is a student-run organization and is not affiliated with the University of Michigan or any other organization.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/hero3d.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

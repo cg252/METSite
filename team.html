@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team &amp; Board | Michigan Trading and Technology</title>
+<meta name="description" content="Meet the board and structure of Michigan Trading and Technology — Partners, Directors, and project desks.">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="aurora"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div class="pcb-grid"></div>
+<canvas id="binary-canvas"></canvas>
+<div class="vignette"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="mttLogoGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3aa0ff"/><stop offset="1" stop-color="#22ffa8"/>
+          </linearGradient>
+        </defs>
+        <g stroke="url(#mttLogoGrad)" stroke-width="3" stroke-linecap="round">
+          <line x1="30" y1="8" x2="30" y2="20"/><line x1="50" y1="8" x2="50" y2="20"/><line x1="70" y1="8" x2="70" y2="20"/>
+          <line x1="30" y1="80" x2="30" y2="92"/><line x1="50" y1="80" x2="50" y2="92"/><line x1="70" y1="80" x2="70" y2="92"/>
+          <line x1="8" y1="30" x2="20" y2="30"/><line x1="8" y1="50" x2="20" y2="50"/><line x1="8" y1="70" x2="20" y2="70"/>
+          <line x1="80" y1="30" x2="92" y2="30"/><line x1="80" y1="50" x2="92" y2="50"/><line x1="80" y1="70" x2="92" y2="70"/>
+        </g>
+        <rect x="20" y="20" width="60" height="60" rx="9" fill="#060a14" stroke="url(#mttLogoGrad)" stroke-width="2.4"/>
+        <circle class="chip-pulse" cx="28" cy="28" r="2.6" fill="#22ffa8"/>
+        <path d="M33 65 V38 L50 58 L67 38 V65" fill="none" stroke="url(#mttLogoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="33" cy="38" r="2.2" fill="#9dffd6"/><circle cx="67" cy="38" r="2.2" fill="#9dffd6"/><circle cx="50" cy="58" r="2.2" fill="#9dffd6"/>
+      </svg>
+      <span>MTT</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="team.html" class="active">Team</a>
+      <a href="events.html">Events</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-banner">
+    <div class="container reveal">
+      <span class="eyebrow">Leadership &amp; Structure</span>
+      <h1>The People Behind <span class="grad-text">Every Desk</span></h1>
+      <p class="lede">MTT is governed by an elected board of Directors, three rotating Partners, and desk-level leadership — all held to the same merit-based standard as every member.</p>
+    </div>
+  </section>
+
+  <!-- ============================ PARTNERS ============================ -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Article V · Section 4</span>
+        <h2>The <span class="grad-text">Partners</span></h2>
+        <p>MTT's three Partners are its Authorized Signers with the University — always the members holding the Director of Trading, Director of Engineering, and Director of Technology seats. Together they share the role equivalent of a President, set MTT's overall direction, and rotate weekly on opening and closing general meetings.</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-card reveal">
+          <div class="avatar">DT</div>
+          <div class="role">Partner</div>
+          <div class="name">— Add Name —</div>
+          <p>Director of Trading. Owns MTT's broker, exchange, and data accounts; sets desk risk limits and manages Trading Capital.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-1">
+          <div class="avatar">DE</div>
+          <div class="role">Partner</div>
+          <div class="name">— Add Name —</div>
+          <p>Director of Engineering. Leads FPGA and low-latency systems development and MTT's hardware equipment &amp; partnerships.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-2">
+          <div class="avatar">DT</div>
+          <div class="role">Partner</div>
+          <div class="name">— Add Name —</div>
+          <p>Director of Technology. Oversees trading platforms, data pipelines, and integration of hardware with MTT's systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ BOARD ============================ -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Article V · Section 1</span>
+        <h2>The Board of <span class="grad-text">Directors</span></h2>
+        <p>Five elected officers govern MTT's trading, research, engineering, technology, and logistics operations. Hover — or tap on mobile — to flip each card.</p>
+      </div>
+      <div class="board-grid">
+
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">01 / BOARD</span>
+              <h3>Director of Trading</h3>
+              <p>Risk, capital allocation &amp; live desk performance.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Oversees execution across all desks — risk management, position limits, and capital allocation. Approves desks for Live Execution, sets written risk limits, and manages MTT's Trading Capital and accounts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card reveal reveal-delay-1">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">02 / BOARD</span>
+              <h3>Director of Research</h3>
+              <p>Strategy evaluation &amp; desk research standards.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Leads evaluation and approval of new desks, sets the research and testing standards a strategy must meet before trading, and reviews existing desks' strategies over time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card reveal reveal-delay-2">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">03 / BOARD</span>
+              <h3>Director of Engineering</h3>
+              <p>FPGA, low-latency &amp; hardware strategy.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Oversees MTT's hardware and software strategies — FPGA and low-latency systems, hardware-accelerated trading projects, equipment, and hardware-focused industry partnerships.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card reveal">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">04 / BOARD</span>
+              <h3>Director of Technology</h3>
+              <p>Platforms, data pipelines &amp; infrastructure.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Oversees software and technical infrastructure — trading platforms, data pipelines, backtesting tools — and integrates hardware with MTT's trading systems and accounts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card reveal reveal-delay-1">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">05 / BOARD</span>
+              <h3>Director of Logistics</h3>
+              <p>Events, recruiting &amp; member records.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Plans all MTT events — general meetings, recruiting, firm events, socials, and club fairs. Manages member communications, records, and University/CCI compliance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card reveal reveal-delay-2">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="badge mono">ELECTED ANNUALLY</span>
+              <h3>Join the Board</h3>
+              <p>Board elections are held by ranked-choice vote at the end of Winter semester.</p>
+              <span class="flip-hint">Flip for details →</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>Any active member may nominate themselves or another active member. Voting runs top-three ranked-choice by secret ballot — results release after final exams.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DESKS ============================ -->
+  <section>
+    <div class="container">
+      <div class="grid-2" style="align-items:start;">
+        <div class="reveal">
+          <span class="eyebrow">Article VI · Section 5</span>
+          <h2>Project <span class="grad-text">Desks</span></h2>
+          <p>Below the board, members are organized into desks — small teams that carry a trading or hardware project from research through live execution.</p>
+
+          <div class="desk-role">
+            <div class="badge-num">H</div>
+            <div><h4>Desk Head</h4><p>Directs the desk's projects and reports progress to the board every week. Elected by desk members or appointed by the board.</p></div>
+          </div>
+          <div class="desk-role">
+            <div class="badge-num">T</div>
+            <div><h4>Desk Trader</h4><p>Trading-track members who research, test, and execute strategy within the desk.</p></div>
+          </div>
+          <div class="desk-role">
+            <div class="badge-num">E</div>
+            <div><h4>Desk Engineer</h4><p>Hardware-track members building the FPGA and low-latency systems the desk depends on.</p></div>
+          </div>
+        </div>
+
+        <div class="card tilt reveal reveal-delay-1">
+          <div class="tilt-inner">
+            <span class="eyebrow">By the Rules</span>
+            <h3>Desk Limits</h3>
+            <ul style="display:flex;flex-direction:column;gap:14px;margin-top:10px;">
+              <li style="font-size:.92rem;color:var(--muted);">No more than one desk per three active members, including board members.</li>
+              <li style="font-size:.92rem;color:var(--muted);">Every desk needs at least three members, with at least one on each track.</li>
+              <li style="font-size:.92rem;color:var(--muted);">Desks may only be fully dissolved by a unanimous board vote.</li>
+              <li style="font-size:.92rem;color:var(--muted);">Members move between desks only between semesters.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CTA ============================= -->
+  <section>
+    <div class="container">
+      <div class="cta-banner reveal">
+        <span class="eyebrow">Merit-Based Recruiting</span>
+        <h2>Want to Join a <span class="grad-text">Desk?</span></h2>
+        <p>Every applicant — no exceptions — completes the full application and interview process.</p>
+        <div class="hero-actions">
+          <a href="apply.html" class="btn btn-primary">Apply Now <span class="arrow">→</span></a>
+          <a href="events.html" class="btn btn-ghost">See Upcoming Events</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <g stroke="url(#mttLogoGrad)" stroke-width="3" stroke-linecap="round">
+              <line x1="30" y1="8" x2="30" y2="20"/><line x1="50" y1="8" x2="50" y2="20"/><line x1="70" y1="8" x2="70" y2="20"/>
+              <line x1="30" y1="80" x2="30" y2="92"/><line x1="50" y1="80" x2="50" y2="92"/><line x1="70" y1="80" x2="70" y2="92"/>
+              <line x1="8" y1="30" x2="20" y2="30"/><line x1="8" y1="50" x2="20" y2="50"/><line x1="8" y1="70" x2="20" y2="70"/>
+              <line x1="80" y1="30" x2="92" y2="30"/><line x1="80" y1="50" x2="92" y2="50"/><line x1="80" y1="70" x2="92" y2="70"/>
+            </g>
+            <rect x="20" y="20" width="60" height="60" rx="9" fill="#060a14" stroke="url(#mttLogoGrad)" stroke-width="2.4"/>
+            <circle cx="28" cy="28" r="2.6" fill="#22ffa8"/>
+            <path d="M33 65 V38 L50 58 L67 38 V65" fill="none" stroke="url(#mttLogoGrad)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="33" cy="38" r="2.2" fill="#9dffd6"/><circle cx="67" cy="38" r="2.2" fill="#9dffd6"/><circle cx="50" cy="58" r="2.2" fill="#9dffd6"/>
+          </svg>
+          <span>MTT</span>
+        </a>
+        <p>Michigan Trading and Technology trains students at the intersection of electronic trading and hardware engineering through real project desks.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="events.html">Events</a>
+        <a href="apply.html">Apply</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:hello@mttrading.club">hello@mttrading.club</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Michigan Trading and Technology</span>
+      <span class="disclaimer mono">MTT is a student-run organization and is not affiliated with the University of Michigan or any other organization.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
