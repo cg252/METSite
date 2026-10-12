@@ -288,8 +288,25 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/hero3d.js"></script>
+<script>
+  // Skip the heavy 3D hero (and its ~600KB Three.js download) on narrow/mobile
+  // viewports or when the user prefers reduced motion — keeps phone loads
+  // (e.g. scanning a QR code on a business card) fast and battery-friendly.
+  // The CSS gradient/binary-rain background still looks good on its own.
+  (function () {
+    var isNarrow = window.innerWidth <= 760;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isNarrow || reducedMotion) return;
+    var three = document.createElement('script');
+    three.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    three.onload = function () {
+      var hero = document.createElement('script');
+      hero.src = 'js/hero3d.js';
+      document.body.appendChild(hero);
+    };
+    document.body.appendChild(three);
+  })();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
